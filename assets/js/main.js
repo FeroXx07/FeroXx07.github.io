@@ -1,5 +1,5 @@
 /*
-	Strata by HTML5 UP
+	Read Only by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
@@ -9,26 +9,17 @@
 	var $window = $(window),
 		$body = $('body'),
 		$header = $('#header'),
-		$footer = $('#footer'),
-		$main = $('#main'),
+		$titleBar = null,
 		$nav = $('#nav'),
-		settings = {
-
-			// Parallax background effect?
-				parallax: true,
-
-			// Parallax factor (lower = more intense, higher = less intense).
-				parallaxFactor: 20
-
-		};
+		$wrapper = $('#wrapper');
 
 	// Breakpoints.
 		breakpoints({
-			xlarge:  [ '1281px',  '1800px' ],
-			large:   [ '981px',   '1280px' ],
-			medium:  [ '737px',   '980px'  ],
-			small:   [ '481px',   '736px'  ],
-			xsmall:  [ null,      '480px'  ],
+			xlarge:   [ '1281px',  '1680px' ],
+			large:    [ '1025px',  '1280px' ],
+			medium:   [ '737px',   '1024px' ],
+			small:    [ '481px',   '736px'  ],
+			xsmall:   [ null,      '480px'  ],
 		});
 
 	// Play initial animations on page load.
@@ -38,63 +29,34 @@
 			}, 100);
 		});
 
-	// Touch?
-		if (browser.mobile) {
+	// Tweaks/fixes.
 
-			// Turn on touch mode.
-				$body.addClass('is-touch');
+		// Polyfill: Object fit.
+			if (!browser.canUse('object-fit')) {
 
-			// Height fix (mostly for iOS).
-				window.setTimeout(function() {
-					$window.scrollTop($window.scrollTop() + 1);
-				}, 0);
+				$('.image[data-position]').each(function() {
 
-		}
+					var $this = $(this),
+						$img = $this.children('img');
 
-	// Footer.
-		breakpoints.on('<=medium', function() {
-			$footer.insertAfter($main);
-		});
+					// Apply img as background.
+						$this
+							.css('background-image', 'url("' + $img.attr('src') + '")')
+							.css('background-position', $this.data('position'))
+							.css('background-size', 'cover')
+							.css('background-repeat', 'no-repeat');
 
-		breakpoints.on('>medium', function() {
-			$footer.appendTo($header);
-		});
+					// Hide img.
+						$img
+							.css('opacity', '0');
 
-	// Header.
-
-		// Parallax background.
-
-			// Disable parallax on IE (smooth scrolling is jerky), and on mobile platforms (= better performance).
-				if (browser.name == 'ie'
-				||	browser.mobile)
-					settings.parallax = false;
-
-			if (settings.parallax) {
-
-				breakpoints.on('<=medium', function() {
-
-					$window.off('scroll.strata_parallax');
-					$header.css('background-position', '');
-
-				});
-
-				breakpoints.on('>medium', function() {
-
-					$header.css('background-position', 'left 0px');
-
-					$window.on('scroll.strata_parallax', function() {
-						$header.css('background-position', 'left ' + (-1 * (parseInt($window.scrollTop()) / settings.parallaxFactor)) + 'px');
-					});
-
-				});
-
-				$window.on('load', function() {
-					$window.triggerHandler('scroll');
 				});
 
 			}
-			
-			// Nav.
+
+	// Header Panel.
+
+		// Nav.
 			var $nav_a = $nav.find('a');
 
 			$nav_a
@@ -159,25 +121,39 @@
 
 				});
 
-	// Main Sections: Two.
+		// Title Bar.
+			$titleBar = $(
+				'<div id="titleBar">' +
+					'<a href="#header" class="toggle"></a>' +
+					'<span class="title">' + $('#logo').html() + '</span>' +
+				'</div>'
+			)
+				.appendTo($body);
 
-		// Lightbox gallery.
-			$window.on('load', function() {
-
-				$('#two').poptrox({
-					caption: function($a) { return $a.next('h3').text(); },
-					overlayColor: '#2c2c2c',
-					overlayOpacity: 0.85,
-					popupCloserText: '',
-					popupLoaderText: '',
-					selector: '.work-item a.image',
-					usePopupCaption: true,
-					usePopupDefaultStyling: false,
-					usePopupEasyClose: false,
-					usePopupNav: true,
-					windowMargin: (breakpoints.active('<=small') ? 0 : 50)
+		// Panel.
+			$header
+				.panel({
+					delay: 500,
+					hideOnClick: true,
+					hideOnSwipe: true,
+					resetScroll: true,
+					resetForms: true,
+					side: 'right',
+					target: $body,
+					visibleClass: 'header-visible'
 				});
 
-			});
+	// Scrolly.
+		$('.scrolly').scrolly({
+			speed: 1000,
+			offset: function() {
+
+				if (breakpoints.active('<=medium'))
+					return $titleBar.height();
+
+				return 0;
+
+			}
+		});
 
 })(jQuery);
