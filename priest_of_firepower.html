@@ -1,0 +1,142 @@
+	<!DOCTYPE HTML>
+	<!--
+		Read Only by HTML5 UP
+		html5up.net | @ajlkn
+		Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	-->
+	<html>
+	<head>
+		<title>Ali's Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+		<section id="header">
+			<header>
+				<span class="image avatar"><img src="images/avatar_1.jpeg" alt="" /></span>
+				<h1 id="logo"><a href="#">Ali Hassan Shahid</a></h1>
+				<p>C++ Programmer, Unity/C# Developer</p>
+			</header>
+			<nav id="nav">
+				<ul>
+					<li><a href="index.html#one" class="active">About me</a></li>
+					<li><a href="index.html#two">Skills</a></li>
+					<li><a href="index.html#three">Projects</a></li>
+				</ul>
+			</nav>
+			<footer>
+				<ul class="icons">
+					<li><a href="https://www.linkedin.com/in/alihassan-shahid/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+					<li><a href="https://github.com/FeroXx07" class="icon brands fa-github"><span class="label">Github</span></a></li>
+					<li><a href="ali.hassan.shahid@estudiantat.upc.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+			</footer>
+		</section>
+
+		<!-- Wrapper -->
+		<div id="wrapper">
+
+			<!-- Main -->
+			<div id="main">
+
+				<!-- One -->
+				<section id="one">
+									<!-- <div class="image main" data-position="center">
+										<img src="images/banner.jpeg" alt="" />
+									</div>/ -->
+									<div class="container">
+										<header class="major">
+											<h2>Priest of Firepower</h2>
+											<p>Role: Network & Gameplay Programmer</p>
+										</header>
+										<blockquote>The objective of this project is to learn the internal structure of the networking layer in a video game. From the sockets, authentication to network models, synchronization models, object replication and object serialization. So, the Unity's netcode is NOT used in this project, but a custom one created from scratch.</blockquote>
+										<a href="https://github.com/FeroXx07/Priest-Of-Firepower" class="button primary icon brands fa-github">Github</a>
+									</div>
+								</section>
+
+								<!-- Two -->
+								<section id="two">
+									<div class="container">
+										<h2>About the <strong>NETWORKING</strong></h2>
+										<div class ="row">
+											<div class="col-6 col-12-small">
+												<h3>Networking Features:</h3>
+												<ul>
+													<li>Authentication</li>
+													<li>Network Manager</li>
+													<li>Network Object</li>
+													<li>Network Behaviour</li>
+													<li>Replication manager</li>
+													<li>Replication Headers and Streams</li>
+													<li>Input Headers and Streams</li>
+													<li>Packet, encompasses both replication and inputs</li>
+												</ul>
+											</div>
+											<div class="col-6 col-12-small">
+												<h3>Structure</h3>
+												<blockquote>The chosen structure for this 2D top down shooter is "State Synchronization" for the synchronization model, "Client-Server" for the network model, and "Binary Serialization" for the object serialization.</blockquote>
+											</div>
+										</div>
+										<h2>About my <strong>CONTRIBUTIONS</strong></h2>
+										<div class ="row">
+											<div class="col-6 col-12-small">
+												<h3>Object Replication</h3>
+												<blockquote>Network Objects over all clients should have the same Network Id. The spawning, as well the de-spawning, of an object in the server should be replicated in the clients.</blockquote>
+											</div>
+											<div class="col-6 col-12-small">
+												<h3 style="text-align: right">Object Serialization</h3>
+												<blockquote>Network Behaviours allows itself to be serialized in binary format, the replication manager makes the serialized arrive at the same object in the destination machine. There is also the feature of Network Variable, allows for automatic serialization, but it is still WIP.</blockquote>
+											</div>
+										</div>
+
+										<div class ="row">
+											<div class="col-6 col-12-small">
+												<h3>Network Object</h3>
+												<blockquote>Encompasses all the Network Behaviours of inside a Network Object, as well manages the transforms and the interpolations of these.</blockquote>
+											</div>
+											<div class="col-6 col-12-small">
+												<h3 style="text-align: right">Network Behaviour</h3>
+												<blockquote>An extended monobehaviour but with added features like serialization, replication managing like spawn, de-spawn, replication streams, and input sending.</blockquote>
+											</div>
+										</div>
+
+										<div class ="row">
+											<div class="col-6 col-12-small">
+												<h3>Networking of Enemies & UI</h3>
+												<blockquote  style="margin-left: 1em;">The behaviour of enemies in a shared and in sync state between all machines. The refactoring of single player UI into a networking UI capable of handling multiple player and multiple element affected by those players.</blockquote>
+											</div>
+											<div class="col-6 col-12-small">
+												<span class="image fit"><img src="images/priest-of-firepower/Enemy_sniper.gif" alt=""></span>
+											</div>
+										</div>
+										<hr>
+										<h2>About the <strong>GAME</strong></h2>
+										<div class ="row">
+											<div class="col-4 col-12-small">
+												<p  style="margin-right: 1em;">A demo made for the Online & Networks subject at the CITM-UPC. The objective of this project is to learn the internal structure of the networking layer in a video game. From the sockets, authentication to network models, synchronization models, object replication and object serialization. So, the Unity's netcode is NOT used in this project, but a custom one created from scratch.</p>
+											</div>
+											<div class="col-4 col-12-small">
+												<span class="image fit"><img src="images/priest-of-firepower/WallWeapon.gif" alt=""></span>
+											</div>
+											<div class="col-4 col-12-small">
+												<span class="image fit"><img src="images/priest-of-firepower/Interactable_chest.gif" alt=""></span>
+											</div>					
+										</div>
+									</div>
+								</section>
+							</div>
+
+							<!-- Scripts -->
+							<script src="assets/js/jquery.min.js"></script>
+							<script src="assets/js/jquery.scrollex.min.js"></script>
+							<script src="assets/js/jquery.scrolly.min.js"></script>
+							<script src="assets/js/browser.min.js"></script>
+							<script src="assets/js/breakpoints.min.js"></script>
+							<script src="assets/js/util.js"></script>
+							<script src="assets/js/main.js"></script>
+
+						</body>
+						</html>
